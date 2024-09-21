@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เซอร์ไพรส์!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffe6f2;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 50px;
+            color: #ff66b2;
+            animation: bounce 1s infinite alternate;
+        }
+
+        p {
+            font-size: 24px;
+            color: #ff3385;
+        }
+
+        button {
+            padding: 15px 30px;
+            background-color: #ff66b2;
+            color: white;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ff3385;
+        }
+
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeIn 0.5s forwards;
+        }
+
+        #homeBtn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            transform: translateY(20px);
+        }
+
+        #homeBtn.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ยินดีด้วย!</h1>
+        <p id="congrats">คุณผ่านแบบทดสอบแล้ว เซอร์ไพรส์รออยู่ตรงนี้!</p>
+        <p id="thanks">ขอบคุณที่เล่นด้วยกันนะ!</p>
+        <button onclick="showSurprise()">คลิกเพื่อรับเซอร์ไพรส์</button>
+        
+        <div id="surprise-container"></div> 
+        
+        <button id="homeBtn" onclick="goHome()">กลับไปหน้าแรก</button>
+    </div>
+
+    <script>
+        const messages = [
+            'คุณคือคนที่ดีที่สุด!',
+            'คุณสำคัญมาก!',
+            'ขอให้ทุกวันของคุณเต็มไปด้วยความสุข!',
+            'ขอบคุณที่อยู่เคียงข้างเสมอ!',
+            'คุณทำให้โลกนี้สวยงามยิ่งขึ้น!',
+            'ขอให้วันนี้เป็นวันที่พิเศษที่สุด!',
+            'รักคุณมาก!',
+            'คุณทำให้ทุกอย่างดีขึ้นเสมอ!',
+            'คุณคือคนที่แสนวิเศษ!',
+            'ไม่มีใครแทนที่คุณได้!'
+        ];
+
+        function showSurprise() {
+            const container = document.getElementById('surprise-container');
+            container.innerHTML = '';
+
+            messages.forEach((message, index) => {
+                const p = document.createElement('p');
+                message.split('').forEach((letter, i) => {
+                    const span = document.createElement('span');
+                    span.textContent = letter;
+                    span.classList.add('letter');
+                    span.style.animationDelay = `${i * 0.05}s`; 
+                    p.appendChild(span);
+                });
+                container.appendChild(p);
+
+                setTimeout(() => {
+                    p.classList.add('visible');
+                    speakMessage(message); // อ่านข้อความแต่ละบรรทัด
+                }, index * 1500); 
+            });
+
+            setTimeout(() => {
+                document.getElementById('homeBtn').classList.add('visible');
+            }, messages.length * 1500); 
+        }
+
+        function speakMessage(message) {
+        const synth = window.speechSynthesis;
+        const utterance = new SpeechSynthesisUtterance(message);
+        utterance.lang = 'th-TH';  // กำหนดภาษาเป็นไทย
+        utterance.pitch = 1.2;  // ระดับเสียงที่สูงขึ้นเล็กน้อย (ปรับได้ตั้งแต่ 0 ถึง 2)
+        utterance.rate = 0.9;   // ลดความเร็วลงเพื่อให้ฟังนุ่มนวล (ค่า 1 คือค่ามาตรฐาน)
+        utterance.volume = 1;   // ระดับความดังเต็มที่ (0 ถึง 1)
+        synth.speak(utterance);
+    }
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

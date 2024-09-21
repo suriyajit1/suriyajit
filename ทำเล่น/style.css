@@ -1,0 +1,87 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffe6f0;  /* สีชมพูอ่อนสำหรับพื้นหลัง */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 24px;
+    text-align: center;
+    color: #d63384; /* สีชมพูเข้มสำหรับหัวข้อ */
+    margin-bottom: 20px;
+}
+
+/* Question Styles */
+p {
+    font-size: 18px;
+    margin: 20px 0 10px;
+    color: #555;
+}
+
+/* Radio Button Styles */
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+label {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Button Styles */
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff66b2; /* ปุ่มสีชมพู */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #ff3385; /* ปุ่มเปลี่ยนสีเมื่อ hover */
+}
+
+/* Result Section Styles */
+#result {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#score {
+    font-size: 20px;
+    color: #d63384; /* สีชมพูเข้มสำหรับผลลัพธ์ */
+}
+
+/* Hide result section by default */
+.hidden {
+    display: none;
+}
+
+/* Next Page Button */
+#nextPageBtn {
+    background-color: #ff66b2;
+    margin-top: 20px;
+}
+
+#nextPageBtn:hover {
+    background-color: #ff3385;
+}

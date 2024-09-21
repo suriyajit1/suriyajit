@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>วันครบรอบ!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>กดปุ่มข้างล่างเพื่อรับเซอร์ไพรส์!</h1>
+        <button id="surpriseBtn">เซอร์ไพรส์!</button>
+    </div>
+
+    <script>
+        document.getElementById('surpriseBtn').addEventListener('click', function() {
+            // เปลี่ยนเส้นทางไปหน้ากิจกรรม
+            window.location.href = 'quiz.html';
+        });
+    </script>
+</body>
+</html>

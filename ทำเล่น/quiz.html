@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบเซอร์ไพรส์!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>แบบทดสอบ: สิ่งที่ผู้หญิงชอบ</h1>
+        <form id="quizForm">
+            <!-- ข้อที่ 1 -->
+            <p>1. ดอกไม้ที่ผู้หญิงส่วนใหญ่ชอบคืออะไร?</p>
+            <input type="radio" name="q1" value="a"> ดอกกุหลาบ<br>
+            <input type="radio" name="q1" value="b"> ดอกทานตะวัน<br>
+            <input type="radio" name="q1" value="c"> ดอกลิลลี่<br>
+
+            <!-- ข้อที่ 2 -->
+            <p>2. ขนมหวานที่ผู้หญิงส่วนใหญ่ชอบคืออะไร?</p>
+            <input type="radio" name="q2" value="a"> ช็อกโกแลต<br>
+            <input type="radio" name="q2" value="b"> ลูกอม<br>
+            <input type="radio" name="q2" value="c"> เค้ก<br>
+
+            <!-- ข้อที่ 3 -->
+            <p>3. ผู้หญิงส่วนใหญ่ชอบใช้เวลาว่างทำอะไร?</p>
+            <input type="radio" name="q3" value="a"> อ่านหนังสือ<br>
+            <input type="radio" name="q3" value="b"> ช้อปปิ้ง<br>
+            <input type="radio" name="q3" value="c"> ดูหนัง<br>
+
+            <!-- ข้อที่ 4 -->
+            <p>4. สีที่ผู้หญิงมักชอบมากที่สุดคืออะไร?</p>
+            <input type="radio" name="q4" value="a"> สีชมพู<br>
+            <input type="radio" name="q4" value="b"> สีฟ้า<br>
+            <input type="radio" name="q4" value="c"> สีเขียว<br>
+
+            <!-- ข้อที่ 5 -->
+            <p>5. ผู้หญิงส่วนใหญ่ชอบเดินทางไปที่ไหนในวันหยุด?</p>
+            <input type="radio" name="q5" value="a"> ทะเล<br>
+            <input type="radio" name="q5" value="b"> ภูเขา<br>
+            <input type="radio" name="q5" value="c"> เมืองใหญ่<br>
+
+            <!-- ข้อที่ 6 -->
+            <p>6. อาหารเช้าที่ผู้หญิงส่วนใหญ่นิยมทานคืออะไร?</p>
+            <input type="radio" name="q6" value="a"> ข้าวต้ม<br>
+            <input type="radio" name="q6" value="b"> แซนด์วิช<br>
+            <input type="radio" name="q6" value="c"> ซีเรียล<br>
+
+            <!-- ข้อที่ 7 -->
+            <p>7. ของขวัญวันเกิดที่ผู้หญิงมักชอบคืออะไร?</p>
+            <input type="radio" name="q7" value="a"> เครื่องประดับ<br>
+            <input type="radio" name="q7" value="b"> น้ำหอม<br>
+            <input type="radio" name="q7" value="c"> ตุ๊กตา<br>
+
+            <!-- ข้อที่ 8 -->
+            <p>8. แนวหนังที่ผู้หญิงชอบมากที่สุดคืออะไร?</p>
+            <input type="radio" name="q8" value="a"> โรแมนติก<br>
+            <input type="radio" name="q8" value="b"> แอคชั่น<br>
+            <input type="radio" name="q8" value="c"> สยองขวัญ<br>
+
+            <!-- ข้อที่ 9 -->
+            <p>9. ผลไม้ที่ผู้หญิงชอบทานคืออะไร?</p>
+            <input type="radio" name="q9" value="a"> สตรอว์เบอร์รี่<br>
+            <input type="radio" name="q9" value="b"> แตงโม<br>
+            <input type="radio" name="q9" value="c"> มะม่วง<br>
+
+            <!-- ข้อที่ 10 -->
+            <p>10. เครื่องดื่มที่ผู้หญิงนิยมมากที่สุดคืออะไร?</p>
+            <input type="radio" name="q10" value="a"> กาแฟ<br>
+            <input type="radio" name="q10" value="b"> ชาเขียว<br>
+            <input type="radio" name="q10" value="c"> น้ำผลไม้<br>
+
+            <br>
+            <button type="button" id="submitQuiz">ส่งคำตอบ</button>
+        </form>
+
+        <div id="result" class="hidden">
+            <h2>ผลลัพธ์ของคุณ:</h2>
+            <p id="score"></p>
+            <button id="nextPageBtn" class="hidden">ไปยังเซอร์ไพรส์!</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('submitQuiz').addEventListener('click', function() {
+            var score = 0;
+            var totalQuestions = 10;
+
+            // เฉลยคำตอบ
+            var answers = {
+                q1: 'a',  // ดอกกุหลาบ
+                q2: 'a',  // ช็อกโกแลต
+                q3: 'b',  // ช้อปปิ้ง
+                q4: 'a',  // สีชมพู
+                q5: 'a',  // ทะเล
+                q6: 'b',  // แซนด์วิช
+                q7: 'a',  // เครื่องประดับ
+                q8: 'a',  // โรแมนติก
+                q9: 'a',  // สตรอว์เบอร์รี่
+                q10: 'b'  // ชาเขียว
+            };
+
+            // ตรวจสอบคำตอบ
+            for (var i = 1; i <= totalQuestions; i++) {
+                var question = 'q' + i;
+                var selected = document.querySelector('input[name="' + question + '"]:checked');
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            // แสดงคะแนน
+            document.getElementById('score').textContent = "คุณได้ " + score + " คะแนนจากทั้งหมด " + totalQuestions + " ข้อ!";
+            document.getElementById('result').classList.remove('hidden');
+
+            // แสดงปุ่มไปยังเซอร์ไพรส์เมื่อกดส่งคำตอบ
+            document.getElementById('nextPageBtn').classList.remove('hidden');
+        });
+
+        // เปลี่ยนเส้นทางไปหน้าต่อไป
+        document.getElementById('nextPageBtn').addEventListener('click', function() {
+            window.location.href = 'surprise.html';  // เปลี่ยนลิงก์ตามต้องการ
+        });
+    </script>
+</body>
+</html>
